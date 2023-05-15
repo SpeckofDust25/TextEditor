@@ -1,3 +1,13 @@
+# wxWidgets C++ project gitignore
+
+# Ignore build output
+bin/
+build/
+lib/
+Debug/
+Release/
+.vs/
+
 # Prerequisites
 *.d
 
