@@ -1,9 +1,10 @@
 #pragma once
 #include <wx/wx.h>
+#include "TextController.h"
 
 //Anonymous Input Enumerator
 enum {
-	NONE = -1
+	NONE = -1, TEXTBOX = 1
 };
 
 class Window: public wxFrame
@@ -12,9 +13,8 @@ public:
 	Window(const wxString _title, const wxPoint _point, const wxSize _size);
 
 private:
-	wxMenuBar menuBar;
-	wxMenu menu;
-	wxTextCtrl textCtrl;
+	wxMenuBar* menuBar;
+	TextController* textController;
 
 private:	//Events
 
