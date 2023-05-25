@@ -12,11 +12,13 @@ namespace TextEditor {
 class FontSizeDialog: public wxDialog
 {
 public:
-	FontSizeDialog(wxWindow* parent, wxWindowID id);
+	FontSizeDialog(wxWindow* parent, wxWindowID id, int _fontSize);
 	~FontSizeDialog();
+	int GetFontSize();
 
 private:
-	int	m_value = 8;
+	int	fontSize = 8;
+	int originalFontSize = 8;
 	wxTextCtrl* textCtrl = nullptr;
 
 private:

@@ -2,7 +2,7 @@
 
 
 TextController::TextController(wxWindow* _parent, wxWindowID _id) : wxTextCtrl(_parent, _id, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE) {
-	font_size = 8;
+	fontSize = 8;
 }
 
 bool TextController::HasMultiplePages() const {
@@ -14,5 +14,12 @@ void TextController::CreateNewText() {
 }
 
 int TextController::GetFontSize() {
-	return font_size;
+	return fontSize;
+}
+
+void TextController::SetFontSize(int size) {
+	wxFont font = GetFont();
+	font.SetPointSize(size);
+	SetFont(font);
+	fontSize = size;
 }

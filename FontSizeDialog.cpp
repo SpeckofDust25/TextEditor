@@ -1,9 +1,11 @@
 #include "FontSizeDialog.h"
 
 
-FontSizeDialog::FontSizeDialog(wxWindow* parent, wxWindowID id): wxDialog(parent, id, "Text Editor", wxDefaultPosition, wxSize(300, 200)) {
+FontSizeDialog::FontSizeDialog(wxWindow* parent, wxWindowID id, int _fontSize): wxDialog(parent, id, "Text Editor", wxDefaultPosition, wxSize(300, 200)) {
+	fontSize = _fontSize;
+	originalFontSize = _fontSize;
 
-	wxIntegerValidator<int> intValidator(&m_value, 0, 99);
+	wxIntegerValidator<int> intValidator(&fontSize, 0, 99);
 
 	wxStaticText* title = new wxStaticText(this, id, " Font Size", wxDefaultPosition, wxDefaultSize, wxTE_CENTER);
 	wxPanel* interactPanel = new wxPanel(this);
@@ -58,16 +60,16 @@ void FontSizeDialog::HandleInput(wxCommandEvent& event) {
 	switch (event.GetId()) {
 
 	case TextEditor::FontSize::DECREMENT:
-		if (m_value > 0) {
-			m_value -= 1;
-			textCtrl->SetLabelText(std::to_string(m_value));
+		if (fontSize > 0) {
+			fontSize -= 1;
+			textCtrl->SetLabelText(std::to_string(fontSize));
 		}
 		break;
 
 	case TextEditor::FontSize::INCREMENT:
-		if (m_value < 99) {
-			m_value += 1;
-			textCtrl->SetLabelText(std::to_string(m_value));
+		if (fontSize < 99) {
+			fontSize += 1;
+			textCtrl->SetLabelText(std::to_string(fontSize));
 		}
 		break;
 
@@ -76,16 +78,21 @@ void FontSizeDialog::HandleInput(wxCommandEvent& event) {
 		break;
 
 	case TextEditor::FontSize::APPLY:
+		originalFontSize = fontSize;
 		Destroy();
 		break;
 
 	case TextEditor::FontSize::TEXT_CHANGE:
 		if (text != "") {
-			m_value = std::stoi(text);
+			fontSize = std::stoi(text);
 			textCtrl->ChangeValue(text);
 		}
 		break;
 	}
+}
+
+int FontSizeDialog::GetFontSize() {
+	return originalFontSize;
 }
 
 

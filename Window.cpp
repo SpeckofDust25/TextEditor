@@ -108,7 +108,11 @@ void Window::Open() {
 //Edit
 void Window::SetFontSize() {
 
-	FontSizeDialog dialog(this, wxID_ANY);
+	FontSizeDialog dialog(this, wxID_ANY, textController->GetFontSize());
+
+	if (dialog.GetFontSize() != textController->GetFontSize()) {
+		textController->SetFontSize(dialog.GetFontSize());
+	}
 }
 
 //Static Button Input Events
