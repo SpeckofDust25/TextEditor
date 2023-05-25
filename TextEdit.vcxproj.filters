@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Sub-Windows">
+      <UniqueIdentifier>{8913a80e-1aaa-4148-94d0-7362f752629c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sub-Windows">
+      <UniqueIdentifier>{08c6630e-677a-4f54-9682-ccd5fc63d997}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp">
@@ -24,6 +30,9 @@
     <ClCompile Include="TextController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FontSizeDialog.cpp">
+      <Filter>Source Files\Sub-Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -34,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="TextController.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FontSizeDialog.h">
+      <Filter>Header Files\Sub-Windows</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
