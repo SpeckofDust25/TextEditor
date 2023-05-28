@@ -16,12 +16,14 @@ class Window: public wxFrame
 {
 public: 
 	Window(const wxString _title, const wxPoint _point, const wxSize _size);
+	void LoadFile(wxString directory);
 
 private:
 	std::string fileName;
 	std::string fileDirectory;
 	wxMenuBar* menuBar;
 	TextController* textController;
+	void Update();
 	void Save();
 	void SaveAs();
 	void Open();

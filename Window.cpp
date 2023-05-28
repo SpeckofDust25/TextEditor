@@ -27,8 +27,8 @@ Window::Window(const wxString _title, const wxPoint _point, const wxSize _size) 
 	menuEdit->Append(TextEditor::Font_Color, "&Font Color", wxEmptyString, false);
 
 	SetMenuBar(menuBar);
-	CreateStatusBar(1);
-	SetStatusText("Hello");
+	CreateStatusBar(3);
+	//Position, Characters, Font Size
 
 	textController = new TextController(this, TextEditor::TextBox);
 
@@ -36,6 +36,10 @@ Window::Window(const wxString _title, const wxPoint _point, const wxSize _size) 
 	textSizer->Add(textController, wxSizerFlags(1).Expand());
 
 	SetSizer(textSizer);
+}
+
+void Window::Update() {
+
 }
 
 void Window::MenuEvents(wxCommandEvent& _event) {
@@ -118,8 +122,12 @@ void Window::SetFontColor() {
 	if (dialog.GetColor() != textController->GetForegroundColour()) {
 		textController->SetForegroundColour(dialog.GetColor());
 	}
-	
 }
+
+void Window::LoadFile(wxString directory) {
+	textController->LoadFile(directory, wxTEXT_TYPE_ANY);
+}
+
 
 //Static Button Input Events
 wxBEGIN_EVENT_TABLE(Window, wxFrame)

@@ -1,5 +1,8 @@
 #pragma once
 #include "wx/wxprec.h"
+#include "wx/cmdline.h"
+#include "wx/filename.h"
+#include "wx/textfile.h"
 #include "Window.h"
 
 #ifndef WX_PRECOMP
