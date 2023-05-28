@@ -2,6 +2,7 @@
 #include <wx/wx.h>
 #include "TextController.h"
 #include "FontSizeDialog.h"
+#include "FontColorDialog.h"
 
 namespace TextEditor {	//Anonymous Input Enumerator
 	enum {
@@ -25,6 +26,7 @@ private:
 	void SaveAs();
 	void Open();
 	void SetFontSize();
+	void SetFontColor();
 
 private:	//Events
 	void MenuEvents(wxCommandEvent& _event);

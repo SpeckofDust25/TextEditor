@@ -21,13 +21,13 @@ FontSizeDialog::FontSizeDialog(wxWindow* parent, wxWindowID id, int _fontSize): 
 	mainSizer->Add(applyPanel, wxSizerFlags(1).Expand());
 	mainSizer->AddSpacer(5);
 	
-	wxButton* left = new wxButton(interactPanel, TextEditor::DECREMENT, "-");
-	wxButton* right = new wxButton(interactPanel, TextEditor::INCREMENT, "+");
+	wxButton* left = new wxButton(interactPanel, SizeDialog::FontSize::DECREMENT, "-");
+	wxButton* right = new wxButton(interactPanel, SizeDialog::FontSize::INCREMENT, "+");
 
-	textCtrl = new wxTextCtrl(interactPanel, TextEditor::TEXT_CHANGE, "8", wxDefaultPosition, wxDefaultSize, wxTE_CENTER, intValidator);
+	textCtrl = new wxTextCtrl(interactPanel, SizeDialog::FontSize::TEXT_CHANGE, "8", wxDefaultPosition, wxDefaultSize, wxTE_CENTER, intValidator);
 	
-	wxButton* apply = new wxButton(applyPanel, TextEditor::APPLY, "Apply");
-	wxButton* cancel = new wxButton(applyPanel, TextEditor::CANCEL, "Cancel");
+	wxButton* apply = new wxButton(applyPanel, SizeDialog::FontSize::APPLY, "Apply");
+	wxButton* cancel = new wxButton(applyPanel, SizeDialog::FontSize::CANCEL, "Cancel");
 
 	interactSizer->Add(left, 0, wxALL, 5);
 	interactSizer->Add(textCtrl, 0, wxALL, 5);
@@ -59,30 +59,30 @@ void FontSizeDialog::HandleInput(wxCommandEvent& event) {
 
 	switch (event.GetId()) {
 
-	case TextEditor::FontSize::DECREMENT:
+	case SizeDialog::FontSize::DECREMENT:
 		if (fontSize > 0) {
 			fontSize -= 1;
 			textCtrl->SetLabelText(std::to_string(fontSize));
 		}
 		break;
 
-	case TextEditor::FontSize::INCREMENT:
+	case SizeDialog::FontSize::INCREMENT:
 		if (fontSize < 99) {
 			fontSize += 1;
 			textCtrl->SetLabelText(std::to_string(fontSize));
 		}
 		break;
 
-	case TextEditor::FontSize::CANCEL:
+	case SizeDialog::FontSize::CANCEL:
 		Destroy();
 		break;
 
-	case TextEditor::FontSize::APPLY:
+	case SizeDialog::FontSize::APPLY:
 		originalFontSize = fontSize;
 		Destroy();
 		break;
 
-	case TextEditor::FontSize::TEXT_CHANGE:
+	case SizeDialog::FontSize::TEXT_CHANGE:
 		if (text != "") {
 			fontSize = std::stoi(text);
 			textCtrl->ChangeValue(text);
@@ -97,9 +97,9 @@ int FontSizeDialog::GetFontSize() {
 
 
 wxBEGIN_EVENT_TABLE(FontSizeDialog, wxDialog)
-EVT_BUTTON(TextEditor::DECREMENT, HandleInput)
-EVT_BUTTON(TextEditor::INCREMENT, HandleInput)
-EVT_BUTTON(TextEditor::APPLY, HandleInput)
-EVT_BUTTON(TextEditor::CANCEL, HandleInput)
-EVT_TEXT(TextEditor::TEXT_CHANGE, HandleInput)
+EVT_BUTTON(SizeDialog::FontSize::DECREMENT, HandleInput)
+EVT_BUTTON(SizeDialog::FontSize::INCREMENT, HandleInput)
+EVT_BUTTON(SizeDialog::FontSize::APPLY, HandleInput)
+EVT_BUTTON(SizeDialog::FontSize::CANCEL, HandleInput)
+EVT_TEXT(SizeDialog::FontSize::TEXT_CHANGE, HandleInput)
 wxEND_EVENT_TABLE()

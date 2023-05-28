@@ -2,7 +2,7 @@
 #include <wx/wx.h>
 #include <wx/valnum.h>
 
-namespace TextEditor {
+namespace SizeDialog {
 	enum FontSize {
 		DECREMENT, INCREMENT, TEXT_CHANGE,
 		APPLY, CANCEL, 

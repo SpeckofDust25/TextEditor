@@ -23,7 +23,7 @@ Window::Window(const wxString _title, const wxPoint _point, const wxSize _size) 
 	menuFile->Append(TextEditor::Exit, "&Exit", wxEmptyString, false);
 
 	menuEdit->Append(TextEditor::Font_Size, "&Font Size", wxEmptyString, false);
-	menuEdit->Append(TextEditor::Font_Type, "&Font Type", wxEmptyString, false);
+	//menuEdit->Append(TextEditor::Font_Type, "&Font Type", wxEmptyString, false);
 	menuEdit->Append(TextEditor::Font_Color, "&Font Color", wxEmptyString, false);
 
 	SetMenuBar(menuBar);
@@ -71,10 +71,8 @@ void Window::MenuEvents(wxCommandEvent& _event) {
 		SetFontSize();
 		break;
 
-	case TextEditor::Font_Type:
-		break;
-	
 	case TextEditor::Font_Color:
+		SetFontColor();
 		break;
 	}
 }
@@ -107,12 +105,20 @@ void Window::Open() {
 
 //Edit
 void Window::SetFontSize() {
-
 	FontSizeDialog dialog(this, wxID_ANY, textController->GetFontSize());
 
 	if (dialog.GetFontSize() != textController->GetFontSize()) {
 		textController->SetFontSize(dialog.GetFontSize());
 	}
+}
+
+void Window::SetFontColor() {
+	FontColorDialog dialog(this, wxID_ANY, textController->GetForegroundColour());
+
+	if (dialog.GetColor() != textController->GetForegroundColour()) {
+		textController->SetForegroundColour(dialog.GetColor());
+	}
+	
 }
 
 //Static Button Input Events

@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="FontColorDialog.cpp" />
     <ClCompile Include="FontSizeDialog.cpp" />
     <ClCompile Include="TextController.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="FontColorDialog.h" />
     <ClInclude Include="FontSizeDialog.h" />
     <ClInclude Include="TextController.h" />
     <ClInclude Include="Window.h" />

@@ -33,6 +33,9 @@
     <ClCompile Include="FontSizeDialog.cpp">
       <Filter>Source Files\Sub-Windows</Filter>
     </ClCompile>
+    <ClCompile Include="FontColorDialog.cpp">
+      <Filter>Source Files\Sub-Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FontSizeDialog.h">
+      <Filter>Header Files\Sub-Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="FontColorDialog.h">
       <Filter>Header Files\Sub-Windows</Filter>
     </ClInclude>
   </ItemGroup>
