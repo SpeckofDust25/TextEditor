@@ -19,8 +19,7 @@ public:
 	void LoadFile(wxString directory);
 
 private:
-	std::string fileName;
-	std::string fileDirectory;
+	std::string directory;
 	wxMenuBar* menuBar;
 	TextController* textController;
 	void Update();

@@ -4,6 +4,7 @@
 Window::Window(const wxString _title, const wxPoint _point, const wxSize _size) :
 	wxFrame(nullptr, wxID_ANY, _title, _point, _size) {
 
+	directory = "";
 	Centre();	//Window Gets Created At the Center of the Screen
 
 	wxMenu* menuFile = new wxMenu();
@@ -52,7 +53,7 @@ void Window::MenuEvents(wxCommandEvent& _event) {
 		break;
 
 	case TextEditor::Save:
-		if (fileName.size() <= 0) {
+		if (directory.size() <= 0) {
 			SaveAs();
 		} else {
 			Save();
@@ -83,8 +84,8 @@ void Window::MenuEvents(wxCommandEvent& _event) {
 
 //File
 void Window::Save() {
-	if (fileName != "") {
-		textController->SaveFile(fileDirectory + "\\" + fileName);
+	if (directory != "") {
+		textController->SaveFile(directory);
 	}
 }
 
@@ -92,18 +93,16 @@ void Window::SaveAs() {
 	wxFileDialog saveMenu(this, "Save As", wxEmptyString, wxEmptyString, ".txt", wxFD_SAVE);
 
 	if (saveMenu.ShowModal() == wxID_OK) {
-		textController->SaveFile(saveMenu.GetDirectory() + "\\" + saveMenu.GetFilename());
+		directory = saveMenu.GetDirectory() + "\\" + saveMenu.GetFilename();
+		textController->SaveFile(directory);
 	}
-
-	fileName = saveMenu.GetFilename();
-	fileDirectory = saveMenu.GetDirectory();
 }
 
 void Window::Open() {
 	wxFileDialog openMenu(this, "Open", wxEmptyString, wxEmptyString, "(*.txt) | *.txt", wxFD_OPEN);
 
 	if (openMenu.ShowModal() == wxID_OK) {
-		textController->LoadFile(openMenu.GetDirectory() + "\\" + openMenu.GetFilename());
+		textController->LoadFile(openMenu.GetDirectory() + openMenu.GetFilename());
 	}
 }
 
@@ -124,7 +123,8 @@ void Window::SetFontColor() {
 	}
 }
 
-void Window::LoadFile(wxString directory) {
+void Window::LoadFile(wxString _directory) {
+	directory = _directory;
 	textController->LoadFile(directory, wxTEXT_TYPE_ANY);
 }
 
